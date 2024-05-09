@@ -8,10 +8,13 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="check_registration.php" method="POST">
-        <input type="text" name="username" placeholder="login" required><br>
-        <input type="password" name="password" placeholder="password" required><br>
-        <input type="submit" value="Log in" id="btn">
-    </form>
+    <div class="login-section">
+        <form action="check_registration.php" method="POST" id="loginForm">
+            <input type="text" name="username" placeholder="login" required><br>
+            <input type="password" name="password" placeholder="password" required><br>
+            <input type="submit" value="Log in" id="btn">
+        </form>
+        <a href="registration.php">You don't have account? Sign up</a>
+    </div>
 </body>
 </html>
