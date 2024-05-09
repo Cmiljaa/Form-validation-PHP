@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="registration_style.css">
+    <link rel="stylesheet" href="css/registration_style.css">
 </head>
 <body>
-    <form action="check_registration.php" method="POST">
+    <form method="POST">
         <h1>Registration Form</h1>
         <div>
             <label for="name">Name:</label>
