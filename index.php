@@ -9,7 +9,7 @@
 </head>
     <body>
         <div class="login-section">
-            <form action="check_login.php" method="POST" id="loginForm">
+            <form action="homepage.php" method="POST" id="loginForm">
                 <input type="text" name="username" placeholder="login" required><br>
                 <input type="password" name="password" placeholder="password" required><br>
                 <input type="submit" value="Log in" id="btn">
@@ -18,3 +18,8 @@
         </div>
     </body>
 </html>
+
+<?php
+
+
+?>

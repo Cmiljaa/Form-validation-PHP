@@ -7,12 +7,16 @@ if(!isset($_POST['username']) || !isset($_POST['password']))
     die("You need to enter the username and password!");
 }
 
-$korisnicko_ime = strtolower(SanitizeData($_POST['username']));
-$password = strtolower(SanitizeData($_POST['password']));
+function SanitizeData($word){
+    return htmlspecialchars(trim(stripslashes($word)));  
+}
 
-if($korisnicko_ime === 'admin' && $password === 'admin123')
-    echo "Successful!";
-else
-    echo "Access denied!";
+$username = SanitizeData($_POST['username']);
+$password = SanitizeData($_POST['password']);
 
+$result = mysqli_query($base, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
 
+if(!mysqli_num_rows($result) > 0)
+    die("Wrong username or password!");
+
+?>
