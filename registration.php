@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="css/registration_style.css">
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" action="homepage.php">
         <h1>Registration Form</h1>
         <div>
             <label for="name">Name:</label>
-            <input id="name" type="text" name="name" placeholder="John Smith">
+            <input id="name" type="text" name="name" placeholder="John Smith" required>
         </div>
         <div>
             <label for="username">Username:</label>
-            <input id="username" type="text" name="username" placeholder="john.smith1">
+            <input id="username" type="text" name="username" placeholder="john.smith1" required>
         </div>
         <div>
             <label for="email">Email address:</label>
-            <input id="email" type="text" name="email" placeholder="john.smith@mail.com">
+            <input id="email" type="text" name="email" placeholder="john.smith@mail.com" required>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input id="password" type="text" name="password" placeholder="*******">
+            <input id="password" type="password" name="password" placeholder="*******" required>
         </div>
         <div>
             <label for="repeat_password">Confirm password:</label>
-            <input id="repeat_password" type="text" name="repeat_password" placeholder="*******">
+            <input id="repeat_password" type="password" name="repeat_password" placeholder="*******" required>
         </div>
         <div>
             <input type="submit" value="Sign up">
@@ -35,3 +35,7 @@
     </form>
 </body>
 </html>
+
+<?php 
+
+require_once 'check_registration.php';

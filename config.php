@@ -1,6 +1,6 @@
 <?php 
 
-mysqli_connect("localhost","root", "", "form_validation_db");
+$base = mysqli_connect("localhost","root", "", "database1");
 
 if(mysqli_connect_errno())
     echo "Database is not connected!";
