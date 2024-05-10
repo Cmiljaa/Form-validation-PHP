@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/registration_style.css">
 </head>
 <body>
-    <form method="POST" action="homepage.php">
+    <form method="POST" action="check_registration.php">
         <h1>Registration Form</h1>
         <div>
             <label for="name">Name:</label>
@@ -35,7 +35,3 @@
     </form>
 </body>
 </html>
-
-<?php 
-
-require_once 'check_registration.php';
