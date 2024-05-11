@@ -13,19 +13,22 @@ function SanitizeData($word){
 
 $username = strtolower(SanitizeData($_POST['username']));
 $password = SanitizeData($_POST['password']);
-echo $password;
-$password = password_hash($password, PASSWORD_DEFAULT);
 
-echo $username; echo $password;
+$search = mysqli_query($base, "SELECT * FROM users WHERE username = '$username'");
 
-$result = mysqli_query($base, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
-
-if(mysqli_num_rows($result) < 1){
-    die("Wrong username or password!");
+if(mysqli_num_rows($search) == 1)
+{
+    $user = mysqli_fetch_assoc($search);
+    if(password_verify($password, $user['password'])){
+        header("Location: homepage.php");
+        exit();
+    }
+    else{
+        echo "Incorrect password!";
+    }
 }
 else{
-    header("Location: homepage.php");
-    exit();
+    echo "Incorrect username!";    
 }
 
 ?>
