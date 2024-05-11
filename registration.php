@@ -40,7 +40,7 @@ require_once 'check_registration.php';
         <div>
             <label for="repeat_password">Confirm password:</label>
             <input id="repeat_password" type="password" name="repeat_password" placeholder="*******" value="<?php echo $repeatPassword; ?>" required>
-            <?php foreach($rpassworder as $error) echo $error ."<br>"; ?>
+            <span><?php foreach($rpassworder as $error) echo $error ."<br>"; ?></span>
         </div>
         <div>
             <input type="submit" value="Sign up">
