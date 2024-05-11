@@ -28,14 +28,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $passworder = checkPassword($password);
     $rpassworder = checkRpassword($repeatPassword, $password);
 
-    if($nameer == [] && )
+    if($nameer == [] && $usernameer == [] && $emailer == [] && $passworder == [] && $rpassworder == [])
+    {
+        mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')"); 
+
+        header("Location: homepage.php");
+        exit(); 
+    }
 }
-
-/*
- mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')"); 
-
-header("Location: homepage.php");
-exit(); */
 
 /*
 This code follows good security practices such as sanitizing user inputs and using password hashing. However,
