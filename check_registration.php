@@ -1,21 +1,49 @@
 <?php 
 
 require_once 'config.php';
+require_once 'functions.php';
 
-$name = SanitizeData($_POST['name']);
-$username = SanitizeData($_POST['username']);
-$email = SanitizeData($_POST['email']);
-$password = SanitizeData($_POST['password']);
-$repeatPassword = SanitizeData($_POST['repeat_password']);
+$nameer = [];
+$usernameer = [];
+$emailer = [];
+$passworder = [];
+$rpassworder = [];
 
-$password = password_hash($password, PASSWORD_DEFAULT);
+$name = '';
+$username = '';
+$email = '';
+$password = '';
+$repeatPassword = '';
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $name = SanitizeData($_POST['name']);
+    $username = SanitizeData($_POST['username']);
+    $email = SanitizeData($_POST['email']);
+    $password = SanitizeData($_POST['password']);
+    $repeatPassword = SanitizeData($_POST['repeat_password']);
 
-mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')"); 
+    $nameer = checkName($name);
+    $usernameer = checkUsername($username, $base);
+    $emailer = checkEmail($email);
+    $passworder = checkPassword($password);
+    $rpassworder = checkRpassword($repeatPassword, $password);
+
+    if($nameer == [] && )
+}
+
+/*
+ mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')"); 
 
 header("Location: homepage.php");
-exit();
+exit(); */
 
-function SanitizeData($word){
-    return htmlspecialchars(trim(stripslashes($word)));  
-}
+/*
+This code follows good security practices such as sanitizing user inputs and using password hashing. However,
+ there are a few improvements you might consider:
+
+Prepared Statements: Use prepared statements or parameterized queries to prevent SQL injection attacks more effectively.
+Feedback on Login Failure: For security reasons, you might want to provide a generic error message like "Incorrect username or
+password" instead of specifying whether the username or password is incorrect. This prevents potential attackers from knowing if
+ they've guessed a valid username.
+Password Strength Requirements: Implement password strength requirements to ensure users are using strong passwords.
+Session Management: Upon successful login, set session variables to manage the user's session.*/
