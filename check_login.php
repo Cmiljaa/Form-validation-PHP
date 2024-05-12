@@ -1,14 +1,11 @@
 <?php 
 
 require_once 'config.php';
+require_once 'functions.php';
 
 if(!isset($_POST['username']) || !isset($_POST['password']))
 {
     die("You need to enter the username and password!");
-}
-
-function SanitizeData($word){
-    return htmlspecialchars(trim(stripslashes($word)));  
 }
 
 $username = strtolower(SanitizeData($_POST['username']));

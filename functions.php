@@ -25,6 +25,10 @@ function checkPassword($password){
         array_push($passworder, "Password is empty!");
     }
 
+    if(minLen($password, 8)){
+        array_push($passworder, "Password is too short!");
+    }
+
     return $passworder;
 }
 
@@ -78,6 +82,8 @@ function checkRpassword($rpassword, $password){
 function emptyField($field) { return $field === ''; }
 
 function maxLen($field, $maxlen) { return strlen($field) > $maxlen; }
+
+function minLen($field, $minlen) { return strlen($field) < $minlen; }
 
 function SanitizeData($word){
     return htmlspecialchars(trim(stripslashes($word)));  
