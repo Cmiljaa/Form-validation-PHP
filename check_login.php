@@ -1,5 +1,4 @@
 <?php 
-
 require_once 'config.php';
 require_once 'functions.php';
 
@@ -17,6 +16,8 @@ if(mysqli_num_rows($search) == 1)
 {
     $user = mysqli_fetch_assoc($search);
     if(password_verify($password, $user['password'])){
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
         header("Location: homepage.php");
         exit();
     }

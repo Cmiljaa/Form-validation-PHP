@@ -3,6 +3,12 @@
 require_once 'config.php';
 
 $queries = mysqli_query($base, "SELECT * FROM users");
+session_start();
+
+if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
+    session_destroy();
+    header("Location: index.php");
+}
 
 ?>
 
