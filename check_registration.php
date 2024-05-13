@@ -3,6 +3,8 @@
 require_once 'config.php';
 require_once 'functions.php';
 
+session_start();
+
 $nameer = [];
 $usernameer = [];
 $emailer = [];
@@ -30,8 +32,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($nameer == [] && $usernameer == [] && $emailer == [] && $passworder == [] && $rpassworder == [])
     {
+        $password = password_hash($password, PASSWORD_DEFAULT);
         mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')");
-        session_start();
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         header("Location: homepage.php");

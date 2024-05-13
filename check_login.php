@@ -2,6 +2,8 @@
 require_once 'config.php';
 require_once 'functions.php';
 
+session_start();
+
 if(!isset($_POST['username']) || !isset($_POST['password']))
 {
     die("You need to enter the username and password!");
@@ -9,6 +11,9 @@ if(!isset($_POST['username']) || !isset($_POST['password']))
 
 $username = strtolower(SanitizeData($_POST['username']));
 $password = SanitizeData($_POST['password']);
+
+
+
 
 $search = mysqli_query($base, "SELECT * FROM users WHERE username = '$username'");
 

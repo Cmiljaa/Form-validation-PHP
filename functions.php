@@ -61,10 +61,6 @@ function checkUsername($username, $base){
         array_push($usernameer, "Username is too long!");
     }
 
-    foreach ($usernameer as $key) {
-        echo $key;
-    }
-
     return $usernameer;
 }
 
