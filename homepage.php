@@ -2,13 +2,14 @@
 
 require_once 'config.php';
 
-$queries = mysqli_query($base, "SELECT * FROM users");
 session_start();
 
 if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
-    session_destroy();
     header("Location: index.php");
+    exit();
 }
+
+$queries = mysqli_query($base, "SELECT * FROM users");
 
 ?>
 
@@ -17,7 +18,7 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="css/homepage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -31,15 +32,21 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
                 <th>Email</th>
                 <th>Created at</th>
             </tr>
-            <?php while($row = mysqli_fetch_assoc($queries)){ ?>
+            <?php while($row = mysqli_fetch_assoc($queries)): ?>
                 <tr>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['created_at']; ?></td>
+                    <td><?= $row['name']; ?></td>
+                    <td><?= $row['username']; ?></td>
+                    <td><?= $row['email']; ?></td>
+                    <td><?= $row['created_at']; ?></td>
                 </tr>
-            <?php } ?>
+            <?php endwhile; ?>
         </tbody>
     </table>
+    <div class="log-out">
+        <form action="log_out.php">
+            <button>Log out</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

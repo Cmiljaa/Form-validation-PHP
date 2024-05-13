@@ -30,12 +30,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($nameer == [] && $usernameer == [] && $emailer == [] && $passworder == [] && $rpassworder == [])
     {
-        mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')"); 
+        mysqli_query($base, "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')");
         session_start();
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         header("Location: homepage.php");
-        exit(); 
+        exit();
     }
 }
 
