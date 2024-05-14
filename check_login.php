@@ -13,8 +13,6 @@ $username = strtolower(SanitizeData($_POST['username']));
 $password = SanitizeData($_POST['password']);
 
 
-
-
 $sql= "SELECT * FROM users WHERE username = ?";
 
 $run = $base -> prepare($sql);
@@ -33,12 +31,9 @@ if($result -> num_rows == 1)
         header("Location: homepage.php");
         exit();
     }
-    else{
-        echo "Incorrect password!";
-    }
 }
 else{
-    echo "Incorrect username!";    
+    echo "Incorrect username or password!";    
 }
 
 ?>

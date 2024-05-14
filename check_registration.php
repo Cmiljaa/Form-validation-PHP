@@ -47,14 +47,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit();
     }
 }
-
-/*
-This code follows good security practices such as sanitizing user inputs and using password hashing. However,
- there are a few improvements you might consider:
-
-Prepared Statements: Use prepared statements or parameterized queries to prevent SQL injection attacks more effectively.
-Feedback on Login Failure: For security reasons, you might want to provide a generic error message like "Incorrect username or
-password" instead of specifying whether the username or password is incorrect. This prevents potential attackers from knowing if
- they've guessed a valid username.
-Password Strength Requirements: Implement password strength requirements to ensure users are using strong passwords.
-Session Management: Upon successful login, set session variables to manage the user's session.*/
