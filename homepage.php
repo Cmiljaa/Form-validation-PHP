@@ -6,7 +6,7 @@ session_start();
 
 $orderby = 'name';
 
-if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
+if(!isset($_SESSION['username'])){
     session_unset();
     session_destroy();
     header("Location: index.php");

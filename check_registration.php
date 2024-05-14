@@ -43,7 +43,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $run -> execute();
 
         $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
         header("Location: homepage.php");
         exit();
     }

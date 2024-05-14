@@ -27,10 +27,9 @@ $result = $run -> get_result();
 
 if($result -> num_rows == 1)
 {
-    $user = mysqli_fetch_assoc($search);
+    $user = mysqli_fetch_assoc($result);
     if(password_verify($password, $user['password'])){
         $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
         header("Location: homepage.php");
         exit();
     }

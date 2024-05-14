@@ -3,7 +3,12 @@
     margin: 0px;
 }
 
+body{
+    background: rgb(66, 147, 245);
+}
+
 .login-section {
+    background: #fff;
     max-width: 350px;
     margin: auto; /* Center the login section */
     margin-top: 150px;
