@@ -15,9 +15,17 @@ $password = SanitizeData($_POST['password']);
 
 
 
-$search = mysqli_query($base, "SELECT * FROM users WHERE username = '$username'");
+$sql= "SELECT * FROM users WHERE username = ?";
 
-if(mysqli_num_rows($search) == 1)
+$run = $base -> prepare($sql);
+
+$run -> bind_param("s", $username);
+
+$run -> execute();
+
+$result = $run -> get_result();
+
+if($result -> num_rows == 1)
 {
     $user = mysqli_fetch_assoc($search);
     if(password_verify($password, $user['password'])){

@@ -4,12 +4,20 @@ require_once 'config.php';
 
 session_start();
 
+$orderby = 'name';
+
 if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
+    session_unset();
+    session_destroy();
     header("Location: index.php");
     exit();
 }
 
-$queries = mysqli_query($base, "SELECT * FROM users");
+$sql = "SELECT * FROM users ORDER BY $orderby";
+
+$run = $base -> query($sql);
+
+$results = $run -> fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -32,14 +40,14 @@ $queries = mysqli_query($base, "SELECT * FROM users");
                 <th>Email</th>
                 <th>Created at</th>
             </tr>
-            <?php while($row = mysqli_fetch_assoc($queries)): ?>
+            <?php foreach($results as $result): ?>
                 <tr>
-                    <td><?= $row['name']; ?></td>
-                    <td><?= $row['username']; ?></td>
-                    <td><?= $row['email']; ?></td>
-                    <td><?= $row['created_at']; ?></td>
+                    <td><?= $result['name']; ?></td>
+                    <td><?= $result['username']; ?></td>
+                    <td><?= $result['email']; ?></td>
+                    <td><?= $result['created_at']; ?></td>
                 </tr>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <div class="log-out">
