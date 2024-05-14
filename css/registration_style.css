@@ -8,6 +8,8 @@ body {
 	font-family: sans-serif;
 	padding: 50px;
 	background: url(https://getwallpapers.com/wallpaper/full/5/c/9/101370.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 h1 {
